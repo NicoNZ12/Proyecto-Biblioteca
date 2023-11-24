@@ -1,29 +1,30 @@
 
-package clasesabstractas;
+package claseabstracta;
 
 import java.util.Objects;
 
-public abstract class Usuario {
+public abstract class Registro {
     //Atributos
     private String usuario;
     private String contraseña;
     
     //constructores
 
-    public Usuario() {
+    public Registro() {
     }
 
-    public Usuario(String usuario, String contraseña) {
+    public Registro(String usuario, String contraseña) {
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
     
-    //Getters
+    //Getter
 
     public String getUsuario() {
         return usuario;
     }
 
+    //Método equals y hashcode para comparar los objetos de tipo Usuario y ver si estan registrados o no a la hora de iniciar sesion
     @Override
     public int hashCode() {
         int hash = 7;
@@ -43,7 +44,7 @@ public abstract class Usuario {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Usuario other = (Usuario) obj;
+        final Registro other = (Registro) obj;
         if (!Objects.equals(this.usuario, other.usuario)) {
             return false;
         }
