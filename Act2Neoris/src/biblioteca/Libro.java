@@ -18,6 +18,9 @@ public class Libro {
     //ArrayList donde guardaremos o eliminaremos los libros
     List<Libro> libros = new ArrayList<>();
 
+    //ArrayList que se usa para reservar y devolver libros
+    List<Libro> librosReservados = new ArrayList<>();
+
     //Constructores
     public Libro() { //constructor vacío
     }
@@ -152,10 +155,11 @@ public class Libro {
                     break;
                 case 2:
                     System.out.println("RESERVAR LIBRO");
-
+                    reservar();
                     break;
                 case 3:
                     System.out.println("DEVOLVER LIBRO");
+                    devolver();
                     break;
                 case 0:
                     System.out.println("\n");
@@ -186,11 +190,62 @@ public class Libro {
                 for (Libro libro : resultadosBusqueda) {
                     System.out.println(libro);
                 }
-            }else{
+            } else {
                 System.out.println("\nNo hay libros ingresados que coincidan con la busqueda: " + busqueda);
             }
         } catch (Exception e) {
             System.out.println("\nHubo un error a la hora de mostrar los resultados.");
+        }
+    }
+
+    public void reservar() {
+        System.out.println("\nEscriba el titulo del libro que desea reservar: ");
+        String titulo = sc.nextLine();
+
+        boolean libroEncontrado = false;
+        try {
+            for (Libro libroReservado : libros) {
+                if (libroReservado.getTitulo().toLowerCase().contains(titulo)) {
+                    librosReservados.add(libroReservado); //Se añade el libro al ArrayList 
+                    libroEncontrado = true;
+                    libros.remove(libroReservado);//Se remueva de la lista original
+                    break;
+                }
+            }
+
+            if (libroEncontrado) {
+                System.out.println("\n*****Libro reservado con exito*****\n");
+            } else {
+                System.out.println("\nEste libro no esta registrado o se encuentra reservado.\n");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al reservar el libro.");
+        }
+    }
+
+    public void devolver() {
+        System.out.println("\nEscriba el titulo del libro que desea devolver: ");
+        String titulo = sc.nextLine();
+
+        boolean libroDevolver = false;
+
+        try {
+            for (Libro libroDevueltos : librosReservados) {
+                if (libroDevueltos.getTitulo().toLowerCase().contains(titulo)) {
+                    librosReservados.remove(libroDevueltos); //Removemos el libro del ArrayList librosReservados
+                    libroDevolver = true;
+                    libros.add(libroDevueltos); //Agregamos el libro a la lista original
+                    break;
+                }
+            }
+
+            if (libroDevolver) {
+                System.out.println("\n*****Libro devuelto con exito*****\n");
+            } else {
+                System.out.println("\nEste libro no se encuentra reservado.\n");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al devolver el libro.");
         }
     }
 
