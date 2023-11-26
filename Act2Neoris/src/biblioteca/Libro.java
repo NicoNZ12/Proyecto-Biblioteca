@@ -205,7 +205,7 @@ public class Libro {
         boolean libroEncontrado = false;
         try {
             for (Libro libroReservado : libros) {
-                if (libroReservado.getTitulo().toLowerCase().contains(titulo)) {
+                if (libroReservado.getTitulo().contains(titulo)) {
                     librosReservados.add(libroReservado); //Se añade el libro al ArrayList 
                     libroEncontrado = true;
                     libros.remove(libroReservado);//Se remueva de la lista original
@@ -231,7 +231,7 @@ public class Libro {
 
         try {
             for (Libro libroDevueltos : librosReservados) {
-                if (libroDevueltos.getTitulo().toLowerCase().contains(titulo)) {
+                if (libroDevueltos.getTitulo().contains(titulo)) {
                     librosReservados.remove(libroDevueltos); //Removemos el libro del ArrayList librosReservados
                     libroDevolver = true;
                     libros.add(libroDevueltos); //Agregamos el libro a la lista original
