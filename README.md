@@ -1,6 +1,6 @@
-# Proyecto-Biblioteca-Neoris
+# Proyecto-Biblioteca
 - Proyecto de gestión de una bibliotecta desarrollado en Java y aplicando el paradigma de POO
-### Desarrollo Java Neoris / Siglo 21 
+### Desarrollo Java Siglo 21 
 ### Cohorte 1
 
 ## Lógica del programa
